@@ -4,15 +4,16 @@ import streamlit as st
 # Page Configuration
 # -----------------------------
 st.set_page_config(
-    page_title="InsightForge AI",
-    page_icon="🔍",
+    page_title="DataVision AI",
+    page_icon="📊",
     layout="wide"
 )
 
 # -----------------------------
 # Header
 # -----------------------------
-st.title("🔍 InsightForge AI")
+st.title("📊 DataVision AI")
+st.caption("AI-Powered Data Analytics & Business Intelligence Platform")
 st.subheader("Intelligent Data Investigation Platform")
 
 st.divider()
@@ -21,15 +22,16 @@ st.divider()
 # Introduction
 # -----------------------------
 st.markdown("""
-Welcome to **InsightForge AI**.
+Welcome to **DataVision AI**.
 
-This platform will help you:
+This platform helps you:
 
 - 📂 Upload CSV and Excel datasets
 - 🧹 Clean data automatically
 - 📊 Generate interactive visualizations
 - 🤖 Train Machine Learning models
 - 🧠 Generate AI-powered insights
+- 💬 Chat with your data using AI
 - 📄 Export professional reports
 """)
 
@@ -38,6 +40,6 @@ st.divider()
 # -----------------------------
 # About
 # -----------------------------
-st.success("🚀 Your journey to becoming a Data Scientist starts here!")
+st.success("🚀 Transform your data into intelligent decisions with AI.")
 
-st.info("⬅️ In the next phase, we'll add a Dataset Upload page.")
+st.info("⬅️ Select a module from the sidebar to begin your analysis.")

@@ -32,6 +32,9 @@ if st.button("🧹 Clean Dataset"):
 
     st.session_state.cleaned_df = cleaned_df
 
+    # Update the main dataset with the cleaned one
+    st.session_state.df = cleaned_df
+
     after_summary = get_dataset_summary(cleaned_df)
 
     st.success("✅ Dataset cleaned successfully!")
