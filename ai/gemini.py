@@ -13,7 +13,7 @@ client = genai.Client(
 def generate_response(prompt):
 
     response = client.models.generate_content(
-        model="gemini-flash-latest",
+        model="gemini-3.8-flash",
         contents=prompt
     )
 
@@ -43,7 +43,7 @@ User Question:
 """
 
     response = client.models.generate_content(
-        model="gemini-flash-latest",
+        model="gemini-3.8-flash",
         contents=prompt
     )
 
@@ -79,7 +79,7 @@ Rules:
 """
 
     response = client.models.generate_content(
-        model="gemini-flash-latest",
+        model="gemini-3.8-flash",
         contents=prompt
     )
 
