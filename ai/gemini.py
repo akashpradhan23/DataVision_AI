@@ -2,24 +2,19 @@ import time
 from google import genai
 import streamlit as st
 
+
 client = genai.Client(
     api_key=st.secrets["GEMINI_API_KEY"]
 )
 
 
-# ======================================================
-# General Chat
-# ======================================================
-
 def generate_response(prompt):
-
     for attempt in range(3):
         try:
             response = client.models.generate_content(
                 model="gemini-3.8-flash",
                 contents=prompt
             )
-
             return response.text
 
         except Exception as e:
@@ -29,12 +24,7 @@ def generate_response(prompt):
                 raise
 
 
-# ======================================================
-# Dataset Q&A
-# ======================================================
-
 def analyze_dataset(question, dataset_info):
-
     prompt = f"""
 You are an expert Data Analyst.
 
@@ -51,20 +41,22 @@ User Question:
 {question}
 """
 
-    response = client.models.generate_content(
-        model="gemini-3.8-flash",
-        contents=prompt
-    )
+    for attempt in range(3):
+        try:
+            response = client.models.generate_content(
+                model="gemini-3.8-flash",
+                contents=prompt
+            )
+            return response.text
 
-    return response.text
+        except Exception as e:
+            if "503" in str(e) and attempt < 2:
+                time.sleep(5 * (2 ** attempt))
+            else:
+                raise
 
-
-# ======================================================
-# Explain Analysis Result
-# ======================================================
 
 def explain_analysis(question, analysis_result):
-
     prompt = f"""
 You are an expert Data Analyst.
 
@@ -87,9 +79,16 @@ Rules:
 - Use bullet points only if they improve readability.
 """
 
-    response = client.models.generate_content(
-        model="gemini-3.8-flash",
-        contents=prompt
-    )
+    for attempt in range(3):
+        try:
+            response = client.models.generate_content(
+                model="gemini-3.8-flash",
+                contents=prompt
+            )
+            return response.text
 
-    return response.text
+        except Exception as e:
+            if "503" in str(e) and attempt < 2:
+                time.sleep(5 * (2 ** attempt))
+            else:
+                raise
